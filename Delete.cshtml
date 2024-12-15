@@ -1,0 +1,39 @@
+﻿@model Clinica.Models.Examen
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar</h1>
+
+<h3>¿Seguro que quiere eliminar?</h3>
+<div>
+    <h4>Examen</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Resultados)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Resultados)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Paciente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Paciente.PacienteId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ExamenId" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> 
+        <a asp-action="Index" button type="button" class="btn btn-secondary">Regresar</a>
+    </form>
+</div>
