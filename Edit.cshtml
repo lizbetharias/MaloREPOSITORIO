@@ -1,42 +1,55 @@
-﻿@model Clinica.Models.Examen
+﻿@model Clinica.Models.RecetaMedicamento
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Editar</h1>
+<h1>Editar Receta Medicamento</h1>
 
-<h4>Examen</h4>
+<h4>RecetaMedicamento</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ExamenId" />
+
+            <!-- ID de receta medicamento (clave primaria, no editable) -->
+            <input type="hidden" asp-for="recetamedicamentoID" />
+            <!-- Selección de receta -->
             <div class="form-group">
-                <label asp-for="Tipo" class="control-label"></label>
-                <input asp-for="Tipo" class="form-control" />
-                <span asp-validation-for="Tipo" class="text-danger"></span>
+                <label asp-for="RecetaId" class="control-label">Receta</label>
+                <select asp-for="RecetaId" class="form-control" asp-items="ViewBag.RecetaId"></select>
             </div>
+
+            <!-- Selección de medicamento -->
             <div class="form-group">
-                <label asp-for="Resultados" class="control-label"></label>
-                <input asp-for="Resultados" class="form-control" />
-                <span asp-validation-for="Resultados" class="text-danger"></span>
+                <label asp-for="MedicamentoId" class="control-label">Medicamento</label>
+                <select asp-for="MedicamentoId" class="form-control" asp-items="ViewBag.MedicamentoId"></select>
             </div>
+            <!-- Cantidad -->
             <div class="form-group">
-                <label asp-for="PacienteId" class="control-label"></label>
-                <select asp-for="PacienteId" class="form-control" asp-items="ViewBag.PacienteId"></select>
-                <span asp-validation-for="PacienteId" class="text-danger"></span>
+                <label asp-for="Cantidad" class="control-label">Cantidad</label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+
+            <!-- Instrucciones -->
+            <div class="form-group">
+                <label asp-for="Instrucciones" class="control-label">Instrucciones</label>
+                <textarea asp-for="Instrucciones" class="form-control"></textarea>
+                <span asp-validation-for="Instrucciones" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
-                <a asp-action="Index" button type="button" class="btn btn-secondary">Regresar</a>
+                <a asp-action="Index" class="btn btn-secondary">Regresar</a>
             </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

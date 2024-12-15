@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Clinica.Models.RecetaMedicamento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Receta Medicamento</h1>
+
+<p>
+    <a asp-action="Create" button class="btn btn-primary">Crear Nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Instrucciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instrucciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medicamento.MedicamentoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Receta.RecetaId)
+            </td>
+            <td>
+                @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                <a asp-action="Edit" asp-route-id="@item.recetamedicamentoID" button type="button" class="btn btn-success">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.recetamedicamentoID" button type="button" class="btn btn-info">Detalle</a>
+                <a asp-action="Delete" asp-route-id="@item.recetamedicamentoID" button type="button" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,12 +1,11 @@
 ﻿@model Clinica.Models.RecetaMedicamento
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
 }
 
-<h1>Eliminar</h1>
+<h1>Detalles</h1>
 
-<h3>Seguro que Quiere eliminar?</h3>
 <div>
     <h4>RecetaMedicamento</h4>
     <hr />
@@ -36,11 +35,8 @@
             @Html.DisplayFor(model => model.Receta.RecetaId)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="RecetaId" />
-        <input type="hidden" asp-for="MedicamentoId" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> 
-        <a asp-action="Index" button type="button" class="btn btn-secondary">Regresar</a>
-    </form>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.recetamedicamentoID" button type="button" class="btn btn-info">Editar</a>
+    <a asp-action="Index" button type="button" class="btn btn-secondary">Regresar</a>
 </div>
